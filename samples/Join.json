@@ -1,0 +1,25 @@
+{
+  "payload": {
+    "account_id": "acrQrmZzTSOASwhRoam9ng",
+    "object": {
+      "uuid": "PWjKCvfwSdeog+RxsKNLjQ\u003d\u003d",
+      "participant": {
+        "user_id": "16778240",
+        "user_name": "A Low",
+        "participant_user_id": "BA6UOekTSd-7cUus1mFDWQ",
+        "id": "BA6UOekTSd-7cUus1mFDWQ",
+        "join_time": "2022-01-09T03:21:20Z",
+        "email": "onlyformiscellaneouspurposes@gmail.com"
+      },
+      "id": "9341547700",
+      "type": 4,
+      "topic": "A Low\u0027s Personal Meeting Room",
+      "host_id": "BA6UOekTSd-7cUus1mFDWQ",
+      "duration": 0,
+      "start_time": "2022-01-09T03:21:20Z",
+      "timezone": ""
+    }
+  },
+  "event_ts": 1641698482405,
+  "event": "meeting.participant_joined"
+}
