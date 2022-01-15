@@ -22,9 +22,18 @@ public class TestMineplex {
     public static AtomicInteger counter = new AtomicInteger(0);
     public static boolean deafen = true;
 
-    public static void main(String[] args){
-        System.out.println("Before instantiating the jda");
+    public static JDA getJda(){
+        if(jda == null){
+            jda = createJDA();
+            System.out.println("jda is being created for the first time, its value is: " + jda);
+        }
+        else{
+            System.out.println("Oops, jda is not null, here is its value: " + jda);
+        }
+        return jda;
+    }
 
+    private static JDA createJDA(){
         try {
             jda = JDABuilder.createDefault("OTIyNzAxNzIzMjg4NjMzNDE1.YcFS8Q.mR274gqixNOl67Ju8IrlCcSQXQY")
 //                    .setActivity(Activity.playing("D4DJ グルミク"))
@@ -55,7 +64,100 @@ public class TestMineplex {
             System.err.println(exception.getClass());
         }
 
+        return jda;
+    }
+
+    public static void main(String[] args){
+        System.out.println("Before instantiating the jda");
+
+        //Before:
+        /*
+
+        try {
+            jda = JDABuilder.createDefault("OTIyNzAxNzIzMjg4NjMzNDE1.YcFS8Q.mR274gqixNOl67Ju8IrlCcSQXQY")
+//                    .setActivity(Activity.playing("D4DJ グルミク"))
+
+                    //Checking ONLINE status of members
+//                    .setChunkingFilter(ChunkingFilter.ALL) //load members (and a whole lot more i'm assuming on startup)
+
+//                                https://stackoverflow.com/questions/61226721/discord-jda-invalid-member-list
+//                                &
+//                                https://github.com/JDA-Applications/JDA-Utilities/issues/116
+//
+//                                These two sites say that chunking need to be enabled in order to
+//
+                    .setMemberCachePolicy(MemberCachePolicy.ALL) //lazy loading
+
+                    .setActivity(Activity.playing("バンドリ")) //literally the playing under each user
+                    .enableIntents(GatewayIntent.GUILD_PRESENCES, GatewayIntent.GUILD_MEMBERS) //allows to see stuff like online status
+                    .enableCache(CacheFlag.ONLINE_STATUS)
+                    .addEventListeners(new EventListener()) //
+                    .build();
+            jda.awaitReady();
+
+//            System.out.println("What if I don't create the jda again? Does the one I created previous times still exist?");
+
+        }
+        catch (Exception exception){
+            System.err.println(exception);
+            System.err.println(exception.getClass());
+        }
+
+         */
+
+        //After:
+        jda = getJda();
+
         System.out.println("After instantiating the jda");
+    }
+
+    public static void mainToBeCalled(){
+        System.out.println("Before instantiating the jda");
+
+        //Before:
+        /*
+        try {
+            jda = JDABuilder.createDefault("OTIyNzAxNzIzMjg4NjMzNDE1.YcFS8Q.mR274gqixNOl67Ju8IrlCcSQXQY")
+//                    .setActivity(Activity.playing("D4DJ グルミク"))
+
+                    //Checking ONLINE status of members
+//                    .setChunkingFilter(ChunkingFilter.ALL) //load members (and a whole lot more i'm assuming on startup)
+
+//                                https://stackoverflow.com/questions/61226721/discord-jda-invalid-member-list
+//                                &
+//                                https://github.com/JDA-Applications/JDA-Utilities/issues/116
+//
+//                                These two sites say that chunking need to be enabled in order to
+//
+                    .setMemberCachePolicy(MemberCachePolicy.ALL) //lazy loading
+
+                    .setActivity(Activity.playing("バンドリ")) //literally the playing under each user
+                    .enableIntents(GatewayIntent.GUILD_PRESENCES, GatewayIntent.GUILD_MEMBERS) //allows to see stuff like online status
+                    .enableCache(CacheFlag.ONLINE_STATUS)
+                    .addEventListeners(new EventListener()) //
+                    .build();
+            jda.awaitReady();
+
+//            System.out.println("What if I don't create the jda again? Does the one I created previous times still exist?");
+
+        }
+        catch (Exception exception){
+            System.err.println(exception);
+            System.err.println(exception.getClass());
+        }
+
+         */
+
+        //After:
+        jda = getJda();
+
+        System.out.println("After instantiating the jda");
+    }
+
+    public static void close(){
+        if(jda != null){
+            jda.shutdown();
+        }
     }
 
     public static boolean deafen(){
@@ -64,7 +166,7 @@ public class TestMineplex {
     }
 }
 
-class EventListener extends ListenerAdapter implements Comparator<EventListener> {
+class EventListener extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event){
@@ -76,6 +178,24 @@ class EventListener extends ListenerAdapter implements Comparator<EventListener>
         ///////////////////////
         ///////////////////////
 
+        exploration_onMessageReceived(event);
+
+        //////////////////////
+        //////////////////////
+        //////////////////////
+
+        if(event.getMessage().getContentRaw().equals("!zoom")){
+            EmbedBuilder info = new EmbedBuilder();
+            info.setTitle("375's Zoom meeting");
+            info.setDescription("https://sfsu.zoom.us/my/alowfung?pwd=ODZ5WjdnYmkreVY0SDJuRG8rTTZvQT09");
+//            info.addField("Online", "A Low", false);
+            info.addField("Online from UserDao", UserDao.getInstance().getAll().toString(), false);
+            event.getChannel().sendMessageEmbeds(info.build()).queue();
+            info.clear();
+        }
+    }
+
+    private void exploration_onMessageReceived(MessageReceivedEvent event){
         System.out.println("Message #" + TestMineplex.counter.incrementAndGet() +
                 ": " + event.getMessage().getContentRaw() + " | " + event.getMessage().toString());
 
@@ -96,7 +216,7 @@ class EventListener extends ListenerAdapter implements Comparator<EventListener>
         System.out.println("Print out all memeber inside guild:");
 //        List<Member> members = event.getGuild().getMembers();
         event.getGuild().getMembers().stream()
-                        .forEach(member -> System.out.println("User #" + TestMineplex.counter.incrementAndGet() + ": " + member));
+                .forEach(member -> System.out.println("User #" + TestMineplex.counter.incrementAndGet() + ": " + member));
         System.out.println("===================================");
 
 
@@ -118,36 +238,8 @@ class EventListener extends ListenerAdapter implements Comparator<EventListener>
         System.out.println(event.getAuthor() + "; this was their original message: " + event.getAuthor().getId());
 
 
-        //////////////////////
-        //////////////////////
-        //////////////////////
-
-        TestMineplex.jda.getTextChannelsByName("general", true).get(0);
-
-//        EmbedBuilder info = new EmbedBuilder();
-//        info.setTitle("375's Zoom meeting");
-//        info.setDescription("https://sfsu.zoom.us/my/alowfung?pwd=ODZ5WjdnYmkreVY0SDJuRG8rTTZvQT09");
-//        info.addField("Online", "A Low", false);
-//        info.addField("Online from UserDao", UserDao.getInstance().getAll().toString(), false);
-
-//        event.getChannel().sendMessageEmbeds(info.build()).queue();
-//        info.clear();
-
-        if(event.getMessage().getContentRaw().equals("!zoom")){
-            EmbedBuilder info = new EmbedBuilder();
-            info.setTitle("375's Zoom meeting");
-            info.setDescription("https://sfsu.zoom.us/my/alowfung?pwd=ODZ5WjdnYmkreVY0SDJuRG8rTTZvQT09");
-//            info.addField("Online", "A Low", false);
-            info.addField("Online from UserDao", UserDao.getInstance().getAll().toString(), false);
-            event.getChannel().sendMessageEmbeds(info.build()).queue();
-            info.clear();
-        }
-
-
     }
 
-    @Override
-    public int compare(EventListener o1, EventListener o2) {
-        return 0;
-    }
 }
+
+
