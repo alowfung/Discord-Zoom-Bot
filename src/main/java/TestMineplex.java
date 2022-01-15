@@ -71,6 +71,11 @@ class EventListener extends ListenerAdapter implements Comparator<EventListener>
         if(event.getAuthor().isBot()){
             return;
         }
+
+        ///////////////////////
+        ///////////////////////
+        ///////////////////////
+
         System.out.println("Message #" + TestMineplex.counter.incrementAndGet() +
                 ": " + event.getMessage().getContentRaw() + " | " + event.getMessage().toString());
 
@@ -108,6 +113,36 @@ class EventListener extends ListenerAdapter implements Comparator<EventListener>
 //        }
         TestMineplex.jda.getTextChannelsByName("general", true).get(0).sendMessage("This was " + event.getAuthor().getName() + "'s original message: ```" + event.getMessage().getContentRaw() + "```").queue();
         System.out.println("=================");
+
+//
+        System.out.println(event.getAuthor() + "; this was their original message: " + event.getAuthor().getId());
+
+
+        //////////////////////
+        //////////////////////
+        //////////////////////
+
+        TestMineplex.jda.getTextChannelsByName("general", true).get(0);
+
+//        EmbedBuilder info = new EmbedBuilder();
+//        info.setTitle("375's Zoom meeting");
+//        info.setDescription("https://sfsu.zoom.us/my/alowfung?pwd=ODZ5WjdnYmkreVY0SDJuRG8rTTZvQT09");
+//        info.addField("Online", "A Low", false);
+//        info.addField("Online from UserDao", UserDao.getInstance().getAll().toString(), false);
+
+//        event.getChannel().sendMessageEmbeds(info.build()).queue();
+//        info.clear();
+
+        if(event.getMessage().getContentRaw().equals("!zoom")){
+            EmbedBuilder info = new EmbedBuilder();
+            info.setTitle("375's Zoom meeting");
+            info.setDescription("https://sfsu.zoom.us/my/alowfung?pwd=ODZ5WjdnYmkreVY0SDJuRG8rTTZvQT09");
+//            info.addField("Online", "A Low", false);
+            info.addField("Online from UserDao", UserDao.getInstance().getAll().toString(), false);
+            event.getChannel().sendMessageEmbeds(info.build()).queue();
+            info.clear();
+        }
+
 
     }
 
