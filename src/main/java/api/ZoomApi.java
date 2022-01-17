@@ -1,10 +1,17 @@
+package api;
+
 import spark.Request;
 import spark.Response;
+
+import handlers.DiscordHandler;
+import handlers.JsonHandler;
+
+import dao.UserDao;
 
 public class ZoomApi {
 
     public static String join(Request request, Response response){
-        System.out.println("join from ZoomApi was called");
+        System.out.println("join from api.ZoomApi was called");
 
         //Parse username from incoming request's body
         String username = JsonHandler.extractUser(request.body());
@@ -21,7 +28,7 @@ public class ZoomApi {
     }
 
     public static String leave(Request request, Response response){
-        System.out.println("leave from ZoomApi was called");
+        System.out.println("leave from api.ZoomApi was called");
 
         String username = JsonHandler.extractUser(request.body());
         String time = JsonHandler.extractTime(request.body());

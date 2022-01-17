@@ -1,3 +1,5 @@
+package handlers;
+
 import net.dv8tion.jda.api.*;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -8,9 +10,10 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.atomic.AtomicInteger;
+
+import dao.UserDao;
 
 public class DiscordHandler {
     public static JDA jda;
@@ -101,7 +104,7 @@ class EventListener extends ListenerAdapter {
             EmbedBuilder info = new EmbedBuilder();
             info.setTitle("375's Zoom meeting");
             info.setDescription(ZOOM_INVITE);
-            info.addField("Online from UserDao", UserDao.getInstance().getAll().toString(), false);
+            info.addField("Online from dao.UserDao", UserDao.getInstance().getAll().toString(), false);
             event.getChannel().sendMessageEmbeds(info.build()).queue();
             info.clear();
         }

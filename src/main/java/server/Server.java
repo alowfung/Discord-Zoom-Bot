@@ -1,3 +1,9 @@
+package server;
+
+import api.DiscordApi;
+import api.ZoomApi;
+import handlers.DiscordHandler;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static spark.Spark.*;
@@ -15,7 +21,7 @@ public class Server {
 //            before("/*", (req, res) -> {
 //                System.out.println("**********");
 //                System.out.println("This is request #" + atomicInteger.incrementAndGet() + "; Zoom event subscription triggered");
-//                System.out.println(JsonHandler.prettify(req.body()));
+//                System.out.println(handlers.JsonHandler.prettify(req.body()));
 //                System.out.println("**********");
 //            });
             post("/join",  ZoomApi::join);

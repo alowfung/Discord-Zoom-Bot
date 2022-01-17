@@ -1,4 +1,8 @@
+package TEST;
+
 import java.text.DateFormat;
+
+import handlers.DiscordHandler;
 
 public class TestSendMessage {
     public static void main(String[] args){

@@ -1,3 +1,5 @@
+package TEST;
+
 import com.google.gson.*;
 
 import java.io.IOException;
@@ -6,8 +8,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.Charset;
-
-import static net.dv8tion.jda.api.GatewayEncoding.JSON;
 
 public class TestZoomJWT {
 
