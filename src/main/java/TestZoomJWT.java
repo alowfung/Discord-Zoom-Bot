@@ -10,6 +10,8 @@ import java.nio.charset.Charset;
 import static net.dv8tion.jda.api.GatewayEncoding.JSON;
 
 public class TestZoomJWT {
+
+    //not to worry, this is a temporary api key and will be expired by the time you see it on GitHub
     private final static String API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IjUyRUZURGZiUVFhTzNheURZWnU2cUEiLCJleHAiOjE2NDE3ODQzMjIsImlhdCI6MTY0MTY5NzkyNX0.L9FxxKnA1GaqX9QdWBp84OBPjS39020yeduApCqSX4w";
     /*
     curl --request GET \

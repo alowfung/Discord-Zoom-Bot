@@ -1,9 +1,9 @@
-//import DiscordHandlerTemp;
+import java.text.DateFormat;
 
 public class TestSendMessage {
     public static void main(String[] args){
-        TestMineplex.mainToBeCalled();
-        DiscordHandlerTemp.sendMessage("Hello try this");
-        TestMineplex.close();
+        DiscordHandler.startJDA();
+        DiscordHandler.sendMessage(DateFormat.getDateTimeInstance().format(System.currentTimeMillis()));
+        DiscordHandler.closeJDA();
     }
 }
