@@ -18,3 +18,9 @@ Discord Bot (as registered as an application under Discord's Developer Portal)
 needs to be added and be given permission to be added to a given server and be given permission to send messages.
 Discord users can then type `!zoom` to get the meeting's invite link and see how many people are currently in the meeting.
 The Bot is also programmed to notify a specific text channel whenever a user joins or leaves a meeting.
+  
+### Technologies Used
+  
+* JDA - Java Wrapper for Discord API: https://github.com/DV8FromTheWorld/JDA
+* Zoom API (Webhooks): https://marketplace.zoom.us/docs/api-reference/webhook-reference
+* Spark - Java Framework for creating web apps: https://sparkjava.com/
