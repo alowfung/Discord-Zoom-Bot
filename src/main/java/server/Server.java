@@ -31,7 +31,8 @@ public class Server {
 
         path("/discord", () -> {
 //            before("/*", (req, res) -> System.out.println("This is request #" + atomicInteger.incrementAndGet() + "; Discord API was (in some way) called"));
-            get("/redirect", DiscordApi::redirect);});
+            get("/redirect", DiscordApi::redirect);
+        });
 
     }
 }
