@@ -1,8 +1,8 @@
 package handlers;
 
 import net.dv8tion.jda.api.*;
-import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.JDA; //technically useless
+import net.dv8tion.jda.api.JDABuilder; //technically useless
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -22,7 +22,7 @@ public class DiscordHandler {
 
     //Discord stuff
     //Replace "<token>" with your actual bot token (and remember to remove angle brackets afterwards)
-    private static final String BOT_TOKEN = "OTIyNzAxNzIzMjg4NjMzNDE1.YcFS8Q.mR274gqixNOl67Ju8IrlCcSQXQY";
+    private static final String BOT_TOKEN = "<BOT_TOKEN>";
 
     //Zoom stuff
     private static final String DEFAULT_CHANNEL_NAME = "zoom";
@@ -78,21 +78,26 @@ public class DiscordHandler {
 
     //Helper
     private static TextChannel getTextChannel(String textChannel){
-        return jda.getTextChannelsByName(textChannel, false).get(0);
+        return getJda().getTextChannelsByName(textChannel, false).get(0);
     }
 
     //Behaviors
+
+    //Sends message to default channel
     public static void sendMessage(String message){
         getTextChannel(DEFAULT_CHANNEL_NAME).sendMessage(message).queue();
     }
 
+    //Sends message to specific channel
     public static void sendMessage(String message, String textChannel){
         getTextChannel(textChannel).sendMessage(message).queue();
     }
 }
 
 class EventListener extends ListenerAdapter {
-    private static final String ZOOM_INVITE = "https://us05web.zoom.us/j/9341547700?pwd=R245RnhzZElpUXNBS2pRMnlMT0dMZz09";
+    // Users will be able to modify the Zoom link in the future
+    // Zoom invite to meeting is hardcoded for the moment
+    private static final String ZOOM_INVITE = "<ZOOM_INVITE>";
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event){
@@ -103,7 +108,7 @@ class EventListener extends ListenerAdapter {
         if(event.getMessage().getContentRaw().equals("!zoom")){
             EmbedBuilder info = new EmbedBuilder();
             info.setTitle("375's Zoom meeting");
-            info.setDescription(ZOOM_INVITE);
+            info.setDescription(ZOOM_INVITE); //displays the invite link as part of the card to be sent in Discord
             info.addField("Online from dao.UserDao", UserDao.getInstance().getAll().toString(), false);
             event.getChannel().sendMessageEmbeds(info.build()).queue();
             info.clear();
