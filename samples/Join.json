@@ -1,20 +1,20 @@
 {
   "payload": {
-    "account_id": "acrQrmZzTSOASwhRoam9ng",
+    "account_id": "<account_id>",
     "object": {
-      "uuid": "PWjKCvfwSdeog+RxsKNLjQ\u003d\u003d",
+      "uuid": "<uuid>",
       "participant": {
-        "user_id": "16778240",
+        "user_id": "<user_id>",
         "user_name": "A Low",
-        "participant_user_id": "BA6UOekTSd-7cUus1mFDWQ",
-        "id": "BA6UOekTSd-7cUus1mFDWQ",
+        "participant_user_id": "<participant_user_id>",
+        "id": "<id>",
         "join_time": "2022-01-09T03:21:20Z",
-        "email": "onlyformiscellaneouspurposes@gmail.com"
+        "email": "<email>"
       },
-      "id": "9341547700",
+      "id": "<id>",
       "type": 4,
       "topic": "A Low\u0027s Personal Meeting Room",
-      "host_id": "BA6UOekTSd-7cUus1mFDWQ",
+      "host_id": "<host_id>",
       "duration": 0,
       "start_time": "2022-01-09T03:21:20Z",
       "timezone": ""
