@@ -3,7 +3,7 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: 1/17/2022 Sub data structure for actual database
+// TODO: 1/17/2022 Substitute ArrayList for actual database
 public class UserDao {
     private static UserDao userDao;
     private List<String> userList;
