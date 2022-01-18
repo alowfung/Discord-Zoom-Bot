@@ -1,0 +1,25 @@
+{
+  "payload": {
+    "account_id": "<account_id>",
+    "object": {
+      "uuid": "<uuid>",
+      "participant": {
+        "user_id": "<user_id>",
+        "user_name": "A Low",
+        "participant_user_id": "<participant_user_id>",
+        "id": "<id>",
+        "join_time": "2022-01-09T03:21:20Z",
+        "email": "<email>"
+      },
+      "id": "<id>",
+      "type": 4,
+      "topic": "A Low\u0027s Personal Meeting Room",
+      "host_id": "<host_id>",
+      "duration": 0,
+      "start_time": "2022-01-09T03:21:20Z",
+      "timezone": ""
+    }
+  },
+  "event_ts": 1641698482405,
+  "event": "meeting.participant_joined"
+}
