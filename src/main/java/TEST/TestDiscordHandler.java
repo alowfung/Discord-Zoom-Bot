@@ -54,7 +54,7 @@
 //        if(event.getMessage().getContentRaw().equals("!zoom")){
 //            EmbedBuilder info = new EmbedBuilder();
 //            info.setTitle("375's Zoom meeting");
-//            info.setDescription("https://sfsu.zoom.us/my/alowfung?pwd=ODZ5WjdnYmkreVY0SDJuRG8rTTZvQT09");
+//            info.setDescription("<zoom_invite>");
 ////            info.addField("Online", "A Low", false);
 //            info.addField("Online from dao.UserDao", UserDao.getInstance().getAll().toString(), false);
 //            event.getChannel().sendMessageEmbeds(info.build()).queue();

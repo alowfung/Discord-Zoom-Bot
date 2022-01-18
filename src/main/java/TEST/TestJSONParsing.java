@@ -14,21 +14,21 @@ public class TestJSONParsing {
     public static void main(String[] args){
         String jsonString = "{\n" +
                 "  \"payload\": {\n" +
-                "    \"account_id\": \"acrQrmZzTSOASwhRoam9ng\",\n" +
+                "    \"account_id\": \"<account_id>\",\n" +
                 "    \"object\": {\n" +
-                "      \"uuid\": \"PWjKCvfwSdeog+RxsKNLjQ\\u003d\\u003d\",\n" +
+                "      \"uuid\": \"<uuid>\",\n" +
                 "      \"participant\": {\n" +
-                "        \"user_id\": \"16778240\",\n" +
+                "        \"user_id\": \"<user_id>\",\n" +
                 "        \"user_name\": \"A Low\",\n" +
-                "        \"participant_user_id\": \"BA6UOekTSd-7cUus1mFDWQ\",\n" +
-                "        \"id\": \"BA6UOekTSd-7cUus1mFDWQ\",\n" +
+                "        \"participant_user_id\": \"<participant_user_id>\",\n" +
+                "        \"id\": \"<id>\",\n" +
                 "        \"join_time\": \"2022-01-09T03:21:20Z\",\n" +
-                "        \"email\": \"onlyformiscellaneouspurposes@gmail.com\"\n" +
+                "        \"email\": \"<email>\"\n" +
                 "      },\n" +
-                "      \"id\": \"9341547700\",\n" +
+                "      \"id\": \"<id>\",\n" +
                 "      \"type\": 4,\n" +
                 "      \"topic\": \"A Low\\u0027s Personal Meeting Room\",\n" +
-                "      \"host_id\": \"BA6UOekTSd-7cUus1mFDWQ\",\n" +
+                "      \"host_id\": \"<host_id>\",\n" +
                 "      \"duration\": 0,\n" +
                 "      \"start_time\": \"2022-01-09T03:21:20Z\",\n" +
                 "      \"timezone\": \"\"\n" +
@@ -41,46 +41,6 @@ public class TestJSONParsing {
         System.out.println(gson.toJson(jsonElement));
 
         System.out.println("======================");
-
-        /*
-
-        JsonElement jsonElement_1 = jsonElement
-                .getAsJsonObject()
-                .get("payload")
-                .getAsJsonObject()
-                .get("account_id");
-
-        System.out.println("----");
-        System.out.println(jsonElement_1.getAsString());
-          // acrQrmZzTSOASwhRoam9ng
-        System.out.println(jsonElement_1.toString());
-          // "acrQrmZzTSOASwhRoam9ng"
-//        System.out.println(jsonElement_1.getAsJsonObject());
-          // Not a JSON Object: "acrQrmZzTSOASwhRoam9ng"
-        System.out.println(jsonElement_1.deepCopy());
-          // "acrQrmZzTSOASwhRoam9ng"
-//        System.out.println(jsonElement_1.getAsJsonNull());
-          // Not a JSON Null: "acrQrmZzTSOASwhRoam9ng"
-//        System.out.println(jsonElement_1.getAsBigDecimal());
-          // Character array is missing "e" notation exponential mark.
-//        System.out.println(jsonElement_1.getAsBigInteger());
-          // For input string: "acrQ"
-        System.out.println(jsonElement_1.getAsBoolean());
-          // false
-
-//        System.out.println(jsonElement_1.getAsByte());
-          // Exception in thread "main" java.lang.NumberFormatException: For input string: "acrQrmZzTSOASwhRoam9ng"
-
-//        System.out.println(jsonElement_1.getAsJsonArray());
-          // Exception in thread "main" java.lang.IllegalStateException: Not a JSON Array: "acrQrmZzTSOASwhRoam9ng"
-
-        System.out.println(jsonElement_1.getAsJsonPrimitive());
-          // "acrQrmZzTSOASwhRoam9ng"
-
-        System.out.println(jsonElement_1.isJsonObject());
-          // false
-
-         */
 
         String username = jsonElement
                 .getAsJsonObject()
